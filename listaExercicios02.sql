@@ -27,4 +27,25 @@ BEGIN
     WHERE Categorias.Nome = Categoria;
 END;
 }
+Questão 4 {
+  CREATE PROCEDURE sp_VerificarLivrosCategoria
+    Categoria NVARCHAR(50)
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM Livros
+        INNER JOIN Categorias ON Livros.CategoriaID = Categorias.ID
+        WHERE Categorias.Nome = Categoria
+    )
+    BEGIN
+        PRINT 'A categoria possui livros.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'A categoria não possui livros.';
+    END
+END;
+}
+
 
