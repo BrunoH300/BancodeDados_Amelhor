@@ -58,6 +58,34 @@ BEGIN
 END;
 }
 
+Questão 6 {
+  CREATE PROCEDURE sp_TitulosPorCategoria
+    Categoria NVARCHAR(50)
+AS
+BEGIN
+    DECLARE Titulo NVARCHAR(100);
+    
+    DECLARE cur CURSOR FOR
+    SELECT Livros.Titulo
+    FROM Livros
+    INNER JOIN Categorias ON Livros.CategoriaID = Categorias.ID
+    WHERE Categorias.Nome = Categoria;
+
+    OPEN cur;
+
+    FETCH NEXT FROM cur INTO Titulo;
+
+    WHILE FETCH_STATUS = 0
+    BEGIN
+        PRINT Titulo;
+        FETCH NEXT FROM cur INTO Titulo;
+    END;
+
+    CLOSE cur;
+    DEALLOCATE cur;
+END;
+}
+
 
 
 
