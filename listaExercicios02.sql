@@ -115,11 +115,12 @@ BEGIN
     INNER JOIN Autores ON Livros.AutorID = Autores.ID;
 END;
 }
+
 Questão 9 {
   -- Vai se chamar sp_LivrosPorCategoria
 -- E retorna todos os livros que pertencem a essa categoria.
 CREATE PROCEDURE sp_LivrosPorCategoria
-    @Categoria NVARCHAR(50)
+    Categoria NVARCHAR(50)
 AS
 BEGIN
     -- Aqui, é uma consulta SQL para selecionar os títulos dos livros
@@ -129,7 +130,17 @@ BEGIN
     SELECT Livros.Titulo
     FROM Livros
     INNER JOIN Categorias ON Livros.CategoriaID = Categorias.ID
-    WHERE Categorias.Nome = @Categoria;
+    WHERE Categorias.Nome = Categoria;
+END;
+}
+
+Questão 10 {
+  CREATE PROCEDURE sp_LivrosESeusAutores
+AS
+BEGIN
+    SELECT Livros.Titulo, Autores.Nome, Autores.Sobrenome
+    FROM Livros
+    INNER JOIN Autores ON Livros.AutorID = Autores.ID;
 END;
 }
 
