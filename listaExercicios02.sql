@@ -47,5 +47,17 @@ BEGIN
     END
 END;
 }
+Questão 5 {
+  CREATE PROCEDURE sp_LivrosAteAno
+    Ano INT
+AS
+BEGIN
+    SELECT Titulo
+    FROM Livros
+    WHERE AnoPublicacao <= Ano;
+END;
+}
+
+
 
 
