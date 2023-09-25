@@ -86,6 +86,26 @@ BEGIN
 END;
 }
 
+Questão 7 {
+  CREATE PROCEDURE sp_AdicionarLivro
+    Titulo NVARCHAR(100),
+    AutorID INT,
+    CategoriaID INT,
+    AnoPublicacao INT
+AS
+BEGIN
+    BEGIN TRY
+        INSERT INTO Livros (Titulo, AutorID, CategoriaID, AnoPublicacao)
+        VALUES (Titulo, AutorID, CategoriaID, AnoPublicacao);
+        PRINT 'Livro adicionado com sucesso.';
+    END TRY
+    BEGIN CATCH
+        PRINT 'Erro ao adicionar o livro: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+0
+}
+
 
 
 
