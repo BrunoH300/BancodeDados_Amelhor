@@ -106,6 +106,15 @@ END;
 0
 }
 
+Questão 8 {
+  CREATE PROCEDURE sp_LivrosESeusAutores
+AS
+BEGIN
+    SELECT Livros.Titulo, Autores.Nome, Autores.Sobrenome
+    FROM Livros
+    INNER JOIN Autores ON Livros.AutorID = Autores.ID;
+END;
+}
 
 
 
